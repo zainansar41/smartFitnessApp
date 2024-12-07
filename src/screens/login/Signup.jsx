@@ -68,7 +68,6 @@ const SignupStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 16,
-    backgroundColor: '#e0f7fa',
   },
   logo: {
     width: 150,
@@ -95,6 +94,5 @@ const SignupStyles = StyleSheet.create({
   },
   loginButton: {
     marginTop: 16,
-    color: '#00796b',
   },
 });

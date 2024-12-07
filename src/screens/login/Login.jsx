@@ -82,6 +82,5 @@ const LoginStyles = StyleSheet.create({
   },
   signupButton: {
     marginTop: 16,
-    color: '#00796b',
   },
 });

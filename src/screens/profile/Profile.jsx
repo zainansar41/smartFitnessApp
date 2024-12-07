@@ -1,52 +1,85 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Picker } from 'react-native';
-import { Button, Text } from 'react-native-paper';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  FlatList,
+} from "react-native";
+import { Button } from "react-native-paper";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Profile() {
-  const [height, setHeight] = useState('');
-  const [bodyType, setBodyType] = useState('');
-  const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState("");
+  const [bodyType, setBodyType] = useState("");
+  const [weight, setWeight] = useState("");
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const bodyTypes = ["Lean", "Bulky", "Medium"];
 
   const handleSave = async () => {
     try {
-      await AsyncStorage.setItem('userProfile', JSON.stringify({ height, bodyType, weight }));
-      alert('Profile saved successfully!');
+      await AsyncStorage.setItem(
+        "userProfile",
+        JSON.stringify({ height, bodyType, weight })
+      );
+      alert("Profile saved successfully!");
     } catch (error) {
-      alert('Failed to save profile.');
+      alert("Failed to save profile.");
     }
   };
 
+  const renderDropdownItem = ({ item }) => (
+    <TouchableOpacity
+      style={styles.dropdownItem}
+      onPress={() => {
+        setBodyType(item);
+        setDropdownVisible(false);
+      }}
+    >
+      <Text>{item}</Text>
+    </TouchableOpacity>
+  );
+
   return (
-    <View style={styles.container}>
+    <View style={{flex:1}}>
       <Text style={styles.title}>Profile</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your height"
-        value={height}
-        onChangeText={setHeight}
-        keyboardType="numeric"
-      />
-      <Picker
-        selectedValue={bodyType}
-        style={styles.picker}
-        onValueChange={(itemValue) => setBodyType(itemValue)}
-      >
-        <Picker.Item label="Select body type" value="" />
-        <Picker.Item label="Ectomorph" value="ectomorph" />
-        <Picker.Item label="Mesomorph" value="mesomorph" />
-        <Picker.Item label="Endomorph" value="endomorph" />
-      </Picker>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your weight"
-        value={weight}
-        onChangeText={setWeight}
-        keyboardType="numeric"
-      />
-      <Button mode="contained" onPress={handleSave} style={styles.button}>
-        Save
-      </Button>
+      <View style={styles.container}>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your height"
+          value={height}
+          onChangeText={setHeight}
+          keyboardType="numeric"
+        />
+        <TouchableOpacity
+          style={styles.dropdown}
+          onPress={() => setDropdownVisible(!dropdownVisible)}
+        >
+          <Text style={styles.dropdownText}>
+            {bodyType ? bodyType : "Select body type"}
+          </Text>
+        </TouchableOpacity>
+        {dropdownVisible && (
+          <FlatList
+            data={bodyTypes}
+            renderItem={renderDropdownItem}
+            keyExtractor={(item) => item}
+            style={styles.dropdownList}
+          />
+        )}
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your weight"
+          value={weight}
+          onChangeText={setWeight}
+          keyboardType="numeric"
+        />
+        <Button mode="contained" onPress={handleSave} style={styles.button}>
+          Save
+        </Button>
+      </View>
     </View>
   );
 }
@@ -54,37 +87,55 @@ export default function Profile() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 16,
-    backgroundColor: '#e0f7fa',
   },
   title: {
     fontSize: 24,
+    marginTop: 32,
     marginBottom: 32,
-    color: '#00796b',
+    color: "#fff",
+    textAlign: "center",
   },
   input: {
-    width: '100%',
+    width: "100%",
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#00796b',
+    borderColor: "#00796b",
     borderRadius: 8,
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
   },
-  picker: {
-    width: '100%',
+  dropdown: {
+    width: "100%",
+    padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#00796b',
+    borderColor: "#00796b",
     borderRadius: 8,
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
+  },
+  dropdownText: {
+    color: "#000",
+  },
+  dropdownList: {
+    width: "100%",
+    maxHeight: 150,
+    borderWidth: 1,
+    borderColor: "#00796b",
+    borderRadius: 8,
+    backgroundColor: "#ffffff",
+    marginBottom: 16,
+  },
+  dropdownItem: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: "#00796b",
   },
   button: {
-    width: '100%',
+    width: "100%",
     padding: 16,
     borderRadius: 8,
-    backgroundColor: '#00796b',
   },
 });
