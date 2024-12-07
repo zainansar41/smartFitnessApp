@@ -11,34 +11,6 @@ const userData = [
     caloriesBurned: 500,
     activeMinutes: 60
   },
-  {
-    userId: 2,
-    userName: "Jane Smith",
-    stepsTaken: 15000,
-    caloriesBurned: 600,
-    activeMinutes: 75
-  },
-  {
-    userId: 3,
-    userName: "Alice Johnson",
-    stepsTaken: 8000,
-    caloriesBurned: 300,
-    activeMinutes: 45
-  },
-  {
-    userId: 4,
-    userName: "Bob Brown",
-    stepsTaken: 10000,
-    caloriesBurned: 400,
-    activeMinutes: 50
-  },
-  {
-    userId: 5,
-    userName: "Charlie Davis",
-    stepsTaken: 7000,
-    caloriesBurned: 250,
-    activeMinutes: 30
-  }
 ];
 
 const { width } = Dimensions.get('window');

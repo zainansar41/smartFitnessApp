@@ -27,6 +27,7 @@ export default function Login({ navigation }) {
         onChangeText={setEmail}
         keyboardType="email-address"
         autoCapitalize="none"
+        placeholderTextColor="#aaa"
       />
       <TextInput
         style={LoginStyles.input}
@@ -34,6 +35,7 @@ export default function Login({ navigation }) {
         value={password}
         onChangeText={setPassword}
         secureTextEntry
+        placeholderTextColor="#aaa"
       />
       <Button mode="contained" onPress={handleLogin} style={LoginStyles.button}>
         Login
@@ -42,6 +44,7 @@ export default function Login({ navigation }) {
         mode="text"
         onPress={() => navigation.navigate("Signup")}
         style={LoginStyles.signupButton}
+        labelStyle={LoginStyles.signupButtonText}
       >
         Don't have an account? Sign Up
       </Button>
@@ -55,7 +58,7 @@ const LoginStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 16,
-    // backgroundColor: '#e0f7fa',
+    backgroundColor: '#e0f7fa',
   },
   logo: {
     width: 150,
@@ -73,6 +76,7 @@ const LoginStyles = StyleSheet.create({
     borderColor: '#00796b',
     borderRadius: 8,
     backgroundColor: '#ffffff',
+    color: '#333',
   },
   button: {
     width: '100%',
@@ -82,5 +86,8 @@ const LoginStyles = StyleSheet.create({
   },
   signupButton: {
     marginTop: 16,
+  },
+  signupButtonText: {
+    color: '#00796b',
   },
 });

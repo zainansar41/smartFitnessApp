@@ -6,8 +6,9 @@ import {
   TouchableOpacity,
   Text,
   FlatList,
+  Image,
 } from "react-native";
-import { Button } from "react-native-paper";
+import { Button, IconButton } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Profile() {
@@ -43,15 +44,29 @@ export default function Profile() {
   );
 
   return (
-    <View style={{flex:1}}>
-      <Text style={styles.title}>Profile</Text>
+    <View style={{ flex: 1 }}>
+      {/* <Text style={styles.title}>Profile</Text> */}
       <View style={styles.container}>
+        <View style={styles.profileHeader}>
+          <Image
+            source={{ uri: 'https://via.placeholder.com/150' }}
+            style={styles.profileImage}
+          />
+          <IconButton
+            icon="camera"
+            size={24}
+            style={styles.updateImageButton}
+            onPress={() => alert('Update Image')}
+          />
+        </View>
+        <Text style={styles.userName}>John Doe</Text>
         <TextInput
           style={styles.input}
           placeholder="Enter your height"
           value={height}
           onChangeText={setHeight}
           keyboardType="numeric"
+          placeholderTextColor="#aaa"
         />
         <TouchableOpacity
           style={styles.dropdown}
@@ -75,10 +90,11 @@ export default function Profile() {
           value={weight}
           onChangeText={setWeight}
           keyboardType="numeric"
+          placeholderTextColor="#aaa"
         />
-        <Button mode="contained" onPress={handleSave} style={styles.button}>
-          Save
-        </Button>
+        <TouchableOpacity onPress={handleSave} style={styles.button}>
+          <Text style={{alignSelf:"center",justifyContent:"center",textAlign:"center",color:"white",fontSize:20-2}}>Save</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -95,49 +111,68 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginTop: 32,
     marginBottom: 32,
-    color: "#fff",
     textAlign: "center",
+    color:"white"
+  },
+  profileHeader: {
+    position: 'relative',
+    marginBottom: 16,
+  },
+  profileImage: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    borderWidth: 2,
+    borderColor: '#000',
+  },
+  updateImageButton: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+  },
+  userName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 16,
+    color:"white"
   },
   input: {
     width: "100%",
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: "#00796b",
     borderRadius: 8,
-    backgroundColor: "#ffffff",
     fontSize: 18,
     fontWeight: "bold",
+    color: '#333',
   },
   dropdown: {
     width: "100%",
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: "#00796b",
     borderRadius: 8,
-    backgroundColor: "#ffffff",
   },
   dropdownText: {
-    color: "#000",
+    color: "white",
   },
   dropdownList: {
     width: "100%",
     maxHeight: 150,
     borderWidth: 1,
-    borderColor: "#00796b",
     borderRadius: 8,
-    backgroundColor: "#ffffff",
     marginBottom: 16,
+    color:"white",
   },
   dropdownItem: {
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: "#00796b",
   },
   button: {
+    height:"8%",
     width: "100%",
     padding: 16,
     borderRadius: 8,
+    backgroundColor:"brown"
   },
 });
