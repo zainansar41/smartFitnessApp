@@ -1,6 +1,5 @@
-
 import React from "react";
-import { View, StyleSheet, Dimensions,ScrollView } from "react-native";
+import { View, StyleSheet, Dimensions, ScrollView } from "react-native";
 import { Text, Card, IconButton } from "react-native-paper";
 
 const userData = [
@@ -9,39 +8,39 @@ const userData = [
     userName: "John Doe",
     stepsTaken: 12000,
     caloriesBurned: 500,
-    activeMinutes: 60
+    activeMinutes: 60,
   },
   {
     userId: 2,
     userName: "Jane Smith",
     stepsTaken: 15000,
     caloriesBurned: 600,
-    activeMinutes: 75
+    activeMinutes: 75,
   },
   {
     userId: 3,
     userName: "Alice Johnson",
     stepsTaken: 8000,
     caloriesBurned: 300,
-    activeMinutes: 45
+    activeMinutes: 45,
   },
   {
     userId: 4,
     userName: "Bob Brown",
     stepsTaken: 10000,
     caloriesBurned: 400,
-    activeMinutes: 50
+    activeMinutes: 50,
   },
   {
     userId: 5,
     userName: "Charlie Davis",
     stepsTaken: 7000,
     caloriesBurned: 250,
-    activeMinutes: 30
-  }
+    activeMinutes: 30,
+  },
 ];
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 export default function Home({ navigation }) {
   const renderUserCard = (item) => (
@@ -49,11 +48,7 @@ export default function Home({ navigation }) {
       <View style={styles.cardContent}>
         <View style={styles.userHeader}>
           <Text style={styles.userName}>{item.userName}</Text>
-          <IconButton 
-            icon="fitness" 
-            size={24} 
-            style={styles.fitnessIcon}
-          />
+          <IconButton icon="fitness" size={24} style={styles.fitnessIcon} />
         </View>
         <View style={styles.statsContainer}>
           <View style={styles.statItem}>
@@ -75,19 +70,34 @@ export default function Home({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.title}>Fitness Tracker</Text>
-        <IconButton 
-          icon="chart-line" 
-          size={24} 
-          onPress={() => {/* Add navigation or chart view */}}
-        />
+      <View>
+        <View style={styles.headerContainer}>
+          <View>
+            <Text style={styles.title}>Todays Goal</Text>
+            <Text>Steps: 10000 | Calories: 400 | Active Min: 30</Text>
+          </View>
+          <View>
+          <IconButton
+            icon="heart"
+            size={24}
+            onPress={() => navigation.navigate("Profile")}
+          />
+          <Text>HeartRate</Text>
+          </View>
+        </View>
+        <View style={{paddingHorizontal: 16,}}>
+          <View>
+            <Text style={styles.title}>Remaining Goal</Text>
+            <Text>Steps: 2000 | Calories: 156 | Active Min: 14</Text>
+          </View>
+
+        </View>
       </View>
-      
+
       <ScrollView contentContainerStyle={styles.listContainer}>
         {userData.map((item) => renderUserCard(item))}
-        </ScrollView>
-      </View>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -96,13 +106,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 16,
     paddingTop: 50,
-    paddingBottom: 16,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -110,7 +119,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: '700',
+    fontWeight: "700",
+    marginTop: 12,
   },
   listContainer: {
     paddingHorizontal: 16,
@@ -124,32 +134,32 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   userHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 12,
   },
   userName: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   statsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   statItem: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   statLabel: {
     fontSize: 12,
-    color: '#666',
+    color: "#666",
     marginBottom: 4,
   },
   statValue: {
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   fitnessIcon: {
     margin: 0,
-  }
+  },
 });
