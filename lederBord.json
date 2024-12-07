@@ -1,0 +1,45 @@
+
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "progressPercent": 80,
+      "rank": 1,
+      "goal": 15000
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "progressPercent": 75,
+      "rank": 2,
+      "goal": 14000
+    },
+    {
+      "id": 3,
+      "name": "Alice Johnson",
+      "progressPercent": 60,
+      "rank": 3,
+      "goal": 12000
+    },
+    {
+      "id": 4,
+      "name": "Bob Brown",
+      "progressPercent": 50,
+      "rank": 4,
+      "goal": 10000
+    },
+    {
+      "id": 5,
+      "name": "Charlie Davis",
+      "progressPercent": 40,
+      "rank": 5,
+      "goal": 9000
+    },
+    {
+      "id": 6,
+      "name": "Eve Wilson",
+      "progressPercent": 30,
+      "rank": 6,
+      "goal": 8000
+    }
+  ]
