@@ -203,7 +203,7 @@ const SignupStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#00796b',
     borderRadius: 12,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#333',
     color: '#fff',
     fontSize: 16,
   },

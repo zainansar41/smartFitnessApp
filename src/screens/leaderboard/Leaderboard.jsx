@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 16,
     textAlign: 'center',
-    color: '#333',
+    color: '#fff',
   },
   listContainer: {
     paddingBottom: 16,
