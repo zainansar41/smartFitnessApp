@@ -42,20 +42,20 @@ export default function BottomTabs() {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="Leaderboard"
+        component={Leaderboard}
         options={{
-          tabBarLabel: "Profile",
+          tabBarLabel: "Leaderboard",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account" color={color} size={26} />
           ),
         }}
       />
-      <Tab.Screen
-        name="Leaderboard"
-        component={Leaderboard}
+            <Tab.Screen
+        name="Profile"
+        component={Profile}
         options={{
-          tabBarLabel: "Leaderboard",
+          tabBarLabel: "Profile",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account" color={color} size={26} />
           ),

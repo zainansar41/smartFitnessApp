@@ -106,6 +106,8 @@ const styles = StyleSheet.create({
     borderColor: "#00796b",
     borderRadius: 8,
     backgroundColor: "#ffffff",
+    fontSize: 18,
+    fontWeight: "bold",
   },
   dropdown: {
     width: "100%",
