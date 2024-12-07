@@ -156,7 +156,7 @@ const LoginStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#00796b',
     borderRadius: 12,
-    color: '#333',
+    color: '#fff',
     fontSize: 16,
   },
   passwordContainer: {

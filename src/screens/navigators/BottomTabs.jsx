@@ -5,6 +5,7 @@ import Feed from "./../feed/Feed";
 import Home from "./../home/Home";
 import Profile from "./../profile/Profile";
 import Leaderboard from "../leaderboard/Leaderboard";
+import Challenges from "../feed/Challenges";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,10 +33,10 @@ export default function BottomTabs() {
         }}
       />
       <Tab.Screen
-        name="Feed"
-        component={Feed}
+        name="Challenages"
+        component={Challenges}
         options={{
-          tabBarLabel: "Feed",
+          tabBarLabel: "Chellenages",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="bell" color={color} size={26} />
           ),

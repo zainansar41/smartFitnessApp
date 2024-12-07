@@ -75,7 +75,7 @@ export default function Signup({ navigation }) {
         >
           <View style={SignupStyles.contentContainer}>
             <Image
-              source={require('../assets/logo.png')} // Replace with your actual logo
+              source={require('../../assets/logo.jpg')} // Replace with your actual logo
               style={SignupStyles.logo}
               resizeMode="contain"
             />
@@ -204,7 +204,7 @@ const SignupStyles = StyleSheet.create({
     borderColor: '#00796b',
     borderRadius: 12,
     backgroundColor: '#ffffff',
-    color: '#333',
+    color: '#fff',
     fontSize: 16,
   },
   passwordContainer: {
