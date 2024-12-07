@@ -1,100 +1,100 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
-import { Button, Text, TextInput } from "react-native-paper";
+import { StyleSheet, View, TextInput, Image } from "react-native";
+import { Button, Text } from "react-native-paper";
 
 export default function Signup({ navigation }) {
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
 
   const handleSignup = async () => {
-      navigation.reset({
-        index: 0,
-        routes: [{ name: "BottomTabs" }],
-      });
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "BottomTabs" }],
+    });
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Create an Account</Text>
-      {error && <Text style={styles.error}>{error}</Text>}
-
+    <View style={SignupStyles.container}>
+      <Image
+        source={{ uri: 'https://via.placeholder.com/150' }}
+        style={SignupStyles.logo}
+      />
       <TextInput
         label="Name"
         value={name}
         onChangeText={(text) => setName(text)}
-        style={styles.input}
+        style={SignupStyles.input}
         mode="outlined"
         placeholder="Enter your name"
       />
-
       <TextInput
         label="Email"
         value={email}
         onChangeText={(text) => setEmail(text)}
         keyboardType="email-address"
         autoCapitalize="none"
-        style={styles.input}
+        style={SignupStyles.input}
         mode="outlined"
         placeholder="Enter your email"
       />
-
       <TextInput
         label="Password"
         value={password}
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
-        style={styles.input}
+        style={SignupStyles.input}
         mode="outlined"
         placeholder="Enter your password"
       />
-
-      <Button
-        mode="contained"
-        onPress={handleSignup}
-        loading={loading}
-        disabled={loading || !email || !password || !name}
-        style={styles.button}
-      >
+      <Button mode="contained" onPress={handleSignup} style={SignupStyles.button}>
         Sign Up
       </Button>
-
       <Button
         mode="text"
         onPress={() => navigation.navigate("Login")}
-        style={styles.loginButton}
+        style={SignupStyles.loginButton}
       >
-        Already have an account? Log In
+        Already have an account? Login
       </Button>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const SignupStyles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
+    alignItems: "center",
     justifyContent: "center",
+    paddingHorizontal: 16,
+    backgroundColor: '#e0f7fa',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
+  logo: {
+    width: 150,
+    height: 150,
     marginBottom: 32,
-    textAlign: "center",
-  },
-  error: {
-    color: "red",
-    marginBottom: 16,
-    textAlign: "center",
+    borderRadius: 75,
+    borderWidth: 2,
+    borderColor: '#00796b',
   },
   input: {
-    marginVertical: 8,
+    width: '100%',
+    padding: 16,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#00796b',
+    borderRadius: 8,
+    backgroundColor: '#ffffff',
   },
   button: {
-    marginTop: 16,
+    width: '100%',
+    padding: 16,
+    borderRadius: 8,
+    backgroundColor: '#00796b',
   },
   loginButton: {
-    marginTop: 8,
+    marginTop: 16,
+    color: '#00796b',
   },
 });

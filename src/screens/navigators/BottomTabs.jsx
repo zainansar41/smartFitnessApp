@@ -4,6 +4,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Feed from "./../feed/Feed";
 import Home from "./../home/Home";
 import Profile from "./../profile/Profile";
+import Leaderboard from "../leaderboard/Leaderboard";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,6 +46,16 @@ export default function BottomTabs() {
         component={Profile}
         options={{
           tabBarLabel: "Profile",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Leaderboard"
+        component={Leaderboard}
+        options={{
+          tabBarLabel: "Leaderboard",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account" color={color} size={26} />
           ),

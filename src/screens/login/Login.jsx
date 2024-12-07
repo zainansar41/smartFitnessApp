@@ -55,7 +55,7 @@ const LoginStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 16,
-    backgroundColor: '#e0f7fa',
+    // backgroundColor: '#e0f7fa',
   },
   logo: {
     width: 150,
