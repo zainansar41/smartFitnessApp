@@ -1,23 +1,18 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
-import { useAuth } from "../../context/useAuth";
 
 export default function Signup({ navigation }) {
-  const { registerWithEmail, loading, error, userInfo } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
   const handleSignup = async () => {
-    await registerWithEmail(email, password, name); // Pass name to the register function
-    if (userInfo) {
       navigation.reset({
         index: 0,
         routes: [{ name: "BottomTabs" }],
       });
-    }
   };
 
   return (

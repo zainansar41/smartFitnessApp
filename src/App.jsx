@@ -3,11 +3,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { onAuthStateChanged } from "firebase/auth";
 
 import RootStack from "./screens/navigators/RootStack";
-import { auth } from "./configs/firebase";
 
 WebBrowser.maybeCompleteAuthSession();
 

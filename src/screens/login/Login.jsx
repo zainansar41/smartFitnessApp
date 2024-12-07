@@ -1,33 +1,30 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput } from "react-native";
+import { StyleSheet, View, TextInput, Image } from "react-native";
 import { Button, Text } from "react-native-paper";
-import { useAuth } from "../../context/useAuth";
 
 export default function Login({ navigation }) {
-  const { loginWithEmail, loading, error, userInfo } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    await loginWithEmail(email, password);
-    if (userInfo) {
       navigation.reset({
         index: 0,
         routes: [{ name: "BottomTabs" }],
       });
-    }
   };
 
   return (
     <View style={LoginStyles.container}>
-      <Text style={LoginStyles.title}>Seedling for your project.</Text>
-      {/* {error && <Text style={LoginStyles.error}>{error}</Text>} */}
+      <Image
+        source={{ uri: 'https://via.placeholder.com/150' }}
+        style={LoginStyles.logo}
+      />
       <TextInput
         style={LoginStyles.input}
         placeholder="Email"
         value={email}
-        onChangeText={(text) => setEmail(text)}
+        onChangeText={setEmail}
         keyboardType="email-address"
         autoCapitalize="none"
       />
@@ -35,21 +32,15 @@ export default function Login({ navigation }) {
         style={LoginStyles.input}
         placeholder="Password"
         value={password}
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={setPassword}
         secureTextEntry
       />
-      <Button
-        mode="contained"
-        onPress={handleLogin}
-        loading={loading}
-        disabled={loading || !email || !password}
-        style={LoginStyles.button}
-      >
+      <Button mode="contained" onPress={handleLogin} style={LoginStyles.button}>
         Login
       </Button>
       <Button
         mode="text"
-        onPress={() => navigation.navigate("Signup")} // Navigate to Signup page
+        onPress={() => navigation.navigate("Signup")}
         style={LoginStyles.signupButton}
       >
         Don't have an account? Sign Up
@@ -64,30 +55,33 @@ const LoginStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 16,
+    backgroundColor: '#e0f7fa',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
+  logo: {
+    width: 150,
+    height: 150,
     marginBottom: 32,
-  },
-  error: {
-    color: "red",
-    marginBottom: 16,
-    textAlign: "center",
+    borderRadius: 75,
+    borderWidth: 2,
+    borderColor: '#00796b',
   },
   input: {
-    width: "100%",
-    padding: 12,
-    marginVertical: 8,
+    width: '100%',
+    padding: 16,
+    marginBottom: 16,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: '#00796b',
     borderRadius: 8,
+    backgroundColor: '#ffffff',
   },
   button: {
-    marginTop: 16,
-    width: "100%",
+    width: '100%',
+    padding: 16,
+    borderRadius: 8,
+    backgroundColor: '#00796b',
   },
   signupButton: {
-    marginTop: 8,
+    marginTop: 16,
+    color: '#00796b',
   },
 });

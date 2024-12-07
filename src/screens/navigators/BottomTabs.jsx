@@ -4,7 +4,6 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Feed from "./../feed/Feed";
 import Home from "./../home/Home";
 import Profile from "./../profile/Profile";
-import ChatStack from "./ChatStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -48,16 +47,6 @@ export default function BottomTabs() {
           tabBarLabel: "Profile",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account" color={color} size={26} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Chat"
-        component={ChatStack}
-        options={{
-          tabBarLabel: "Chat",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="chat" color={color} size={26} />
           ),
         }}
       />
